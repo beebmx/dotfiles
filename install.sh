@@ -18,3 +18,22 @@ fi
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+
+# Update Homebrew recipes
+brew update
+
+# Install all our dependencies with bundle (See Brewfile)
+brew tap homebrew/bundle
+brew bundle --file $DOTFILES/Brewfile
+
+# Install PHP extensions with PECL
+pecl install imagick redis swoole
+
+# Install global Composer packages
+/usr/local/bin/composer global require laravel/installer laravel/valet beyondcode/expose
+
+# Install Laravel Valet
+$HOME/.composer/vendor/bin/valet install
+
+# Symlink the Mackup config file to the home directory
+ln -s $DOTFILES/.mackup.cfg $HOME/.mackup.cfg
