@@ -67,7 +67,6 @@ cask 'whatsapp'
 cask 'zoom'
 
 # Quicklook
-cask 'qlmarkdown'
 cask 'quicklook-json'
 
 # Fonts
